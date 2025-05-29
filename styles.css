@@ -1,115 +1,77 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Навигация */
+.bg-crystal {
+    background-color: #6a5acd; /* Пурпурно-лилав */
+  }
+  
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 24px;
   }
   
   body {
+    padding-top: 70px;
+    background-color: #f8f9fa;
     font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    background: #f0f8ff;
-    color: #333;
   }
   
-  header {
-    background: #6a5acd;
+  /* Хедър */
+  .hero {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1581888227599-77981174aef2') no-repeat center center/cover;
+    height: 500px;
     color: white;
-    padding: 1rem;
-    text-align: center;
   }
   
-  nav ul {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    list-style: none;
-    margin-top: 1rem;
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(106, 90, 205, 0.5);
+    width: 100%;
+    height: 100%;
   }
   
-  nav a {
-    color: white;
-    text-decoration: none;
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  /* Секции */
+  .latest-trains {
+    padding: 50px 0;
+    background-color: #fff;
+  }
+  
+  .text-crystal {
+    color: #6a5acd;
     font-weight: bold;
   }
   
-  #hero {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1613929727124-f1cf6b4fae79') no-repeat center center/cover;
-    color: white;
-    padding: 5rem 2rem;
-    text-align: center;
+  /* Карти */
+  .card {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
   }
   
-  #hero button {
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    background: #6a5acd;
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .card-img-top {
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .btn-crystal {
+    background-color: #9370db;
+    color: white;
     border: none;
-    color: white;
-    font-size: 1rem;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
   }
   
-  #hero button:hover {
-    background: #483d8b;
-  }
-  
-  section {
-    padding: 3rem 2rem;
-    text-align: center;
-  }
-  
-  .crystal-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-  
-  .crystal-gallery img {
-    width: 200px;
-    border-radius: 12px;
-    transition: transform 0.3s;
-  }
-  
-  .crystal-gallery img:hover {
-    transform: scale(1.05);
-  }
-  
-  .options {
-    margin-top: 1rem;
-  }
-  
-  .option {
-    padding: 0.5rem 1rem;
-    margin: 0.5rem;
-    background: #e0e0ff;
-    border: 1px solid #6a5acd;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-  
-  .option:hover {
-    background: #d0d0ff;
-  }
-  
-  footer {
-    background: #6a5acd;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    margin-top: 2rem;
-  }
-  .hidden {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease-out;
-  }
-  
-  .show {
-    opacity: 1;
-    transform: translateY(0);
+  .btn-crystal:hover {
+    background-color: #7b68ee;
   }
   
