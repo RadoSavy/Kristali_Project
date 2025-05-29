@@ -17,7 +17,7 @@
   /* Хедър */
   .hero {
     position: relative;
-    background: url('https://images.unsplash.com/photo-1581888227599-77981174aef2') no-repeat center center/cover;
+    background: url('crystal-banner.jpg') no-repeat center center/cover;
     height: 500px;
     color: white;
   }
