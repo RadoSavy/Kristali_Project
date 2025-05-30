@@ -4,93 +4,101 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Кристали по света</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+  <!-- Bootstrap 5.3 CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- External stylesheet -->
   <link rel="stylesheet" href="styles.css">
-</head>
-<body class="index-page">
+  <!-- Scrits in JavaScript -->
+  <script src="scripts.js"></script>
 
-  <!-- Навигация -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-crystal fixed-top">
-    <a class="navbar-brand" href="index.html">
-      <i class="fas fa-gem"></i> Кристали по света
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item active"><a class="nav-link" href="#"><i class="fas fa-home"></i> Начало</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-images"></i> Галерия</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-info-circle"></i> Инфо</a></li>
-        <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-envelope"></i> Контакти</a></li>
-      </ul>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-crystal fixed-top shadow">
+    <div class="container">
+      <!-- Site Logo -->
+      <a class="navbar-brand" href="#"><i class="fas fa-gem"></i> Кристали по света</a>
+      <!-- Toggler for mobile navigation -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <!-- Navigation links -->
+          <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Начало</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery"><i class="fas fa-images"></i> Галерия</a></li>
+          <li class="nav-item"><a class="nav-link" href="#info"><i class="fas fa-info-circle"></i> Инфо</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contacts"><i class="fas fa-envelope"></i> Контакти</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <!-- Хедър -->
+  <!-- Header Section (Hero) -->
   <header class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content text-white text-center">
-      <h1>Магията на кристалите</h1>
-      <p>Открийте техния произход, видове и невероятна красота</p>
+    <div class="hero-content">
+      <h1 class="display-4 fw-bold">Магията на кристалите</h1>
+      <p class="lead">Открийте техния произход, видове и невероятна красота</p>
     </div>
   </header>
 
-  <!-- Галерия -->
-  <section class="latest-trains">
+  <!-- Gallery Section -->
+  <section id="gallery" class="section-padding">
     <div class="container">
-      <h2 class="text-center mb-5 text-crystal">Избрани Кристали</h2>
-      <div class="row">
+      <h2 class="text-center text-crystal mb-5">Избрани Кристали</h2>
+      <div class="row g-4">
+        <!-- Crystal Card 1 -->
         <div class="col-md-4">
           <div class="card">
             <img src="IMAGE_1424682_40_0.jpg" class="card-img-top" alt="Кварц">
             <div class="card-body">
               <h5 class="card-title">Кварц</h5>
               <p class="card-text">Прозрачен и често срещан минерал, използван както в технологии, така и в духовни практики.</p>
-              <a href="#" class="btn btn-crystal btn-block">Научи повече</a>
+              <a href="#" class="btn btn-crystal w-100">Научи повече</a>
             </div>
           </div>
         </div>
 
+        <!-- Crystal Card 2 -->
         <div class="col-md-4">
           <div class="card">
             <img src="Amethyst.webp" class="card-img-top" alt="Аметист">
             <div class="card-body">
               <h5 class="card-title">Аметист</h5>
               <p class="card-text">Лилав кварц, символ на духовност и защита. Особено популярен в бижутерията.</p>
-              <a href="#" class="btn btn-crystal btn-block">Научи повече</a>
+              <a href="#" class="btn btn-crystal w-100">Научи повече</a>
             </div>
           </div>
         </div>
 
+        <!-- Crystal Card 3 -->
         <div class="col-md-4">
           <div class="card">
             <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Citrine_Polished.jpg" class="card-img-top" alt="Цитрин">
             <div class="card-body">
               <h5 class="card-title">Цитрин</h5>
               <p class="card-text">Златист кристал, символизиращ богатство, слънце и позитивна енергия.</p>
-              <a href="#" class="btn btn-crystal btn-block">Научи повече</a>
+              <a href="#" class="btn btn-crystal w-100">Научи повече</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- CTA -->
-      <div class="col-md-12 mt-4 text-center">
-        <div class="card">
+      <!-- Call to Action Card -->
+      <div class="text-center mt-5">
+        <div class="card border-0 shadow">
           <div class="card-body">
             <h5 class="card-title">Искаш да разбереш кой кристал си ти?</h5>
             <a href="#" class="btn btn-info">Започни тест</a>
           </div>
         </div>
       </div>
-
     </div>
   </section>
 
-  <!-- Скриптове -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

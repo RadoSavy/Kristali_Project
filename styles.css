@@ -1,77 +1,71 @@
-/* Навигация */
+/* Custom background color for the navigation bar */
 .bg-crystal {
-    background-color: #6a5acd; /* Пурпурно-лилав */
-  }
-  
-  .navbar-brand {
-    font-weight: bold;
-    font-size: 24px;
-  }
-  
-  body {
-    padding-top: 70px;
-    background-color: #f8f9fa;
-    font-family: 'Segoe UI', sans-serif;
-  }
-  
-  /* Хедър */
-  .hero {
-    position: relative;
-    background: url('crystal-banner.jpg') no-repeat center center/cover;
-    height: 500px;
-    color: white;
-  }
-  
-  .hero-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: rgba(106, 90, 205, 0.5);
-    width: 100%;
-    height: 100%;
-  }
-  
-  .hero-content {
-    position: relative;
-    z-index: 2;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  /* Секции */
-  .latest-trains {
-    padding: 50px 0;
-    background-color: #fff;
-  }
-  
-  .text-crystal {
-    color: #6a5acd;
-    font-weight: bold;
-  }
-  
-  /* Карти */
-  .card {
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .card-img-top {
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px 10px 0 0;
-  }
-  
-  .btn-crystal {
-    background-color: #9370db;
-    color: white;
-    border: none;
-  }
-  
-  .btn-crystal:hover {
-    background-color: #7b68ee;
-  }
-  
+  background-color: #6a5acd; /* Purple-lilac */
+}
+
+/* Styling for the website logo/brand */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* Global body styling */
+body {
+  padding-top: 70px; /* Space for fixed navbar */
+  background-color: #f8f9fa; /* Light gray background */
+  font-family: 'Segoe UI', sans-serif; /* Clean sans-serif font */
+}
+
+/* Hero section styling */
+.hero {
+  position: relative;
+  background: url('crystal-banner.jpg') no-repeat center center/cover; /* Full-screen banner */
+  height: 500px;
+  color: rgb(138, 121, 121);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Padding for section spacing */
+.section-padding {
+  padding: 60px 0;
+}
+
+/* Custom color for section headings */
+.text-crystal {
+  color: #6a5acd;
+  font-weight: bold;
+}
+
+/* Card styling for crystal entries */
+.card {
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover; /* Ensure image doesn't stretch */
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+/* Custom button styling */
+.btn-crystal {
+  background-color: #9370db; /* Medium purple */
+  color: white;
+  border: none;
+}
+
+.btn-crystal:hover {
+  background-color: #7b68ee; /* Slightly lighter purple */
+  color: white;
+}
