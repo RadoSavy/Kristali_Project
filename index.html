@@ -10,23 +10,53 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- External stylesheet -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Scrits in JavaScript -->
-  <script src="scripts.js"></script>
-
+  <!-- JavaScript -->
+  <script defer src="scripts.js"></script>
+  <style>
+    .fun-fact {
+      background: #f0f9ff;
+      border-left: 5px solid #00bcd4;
+      padding: 20px;
+      margin-top: 20px;
+      border-radius: 10px;
+    }
+    .quiz-box {
+      background-color: #fef7e0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .feather-anim {
+      animation: float 6s ease-in-out infinite;
+      position: absolute;
+      z-index: 0;
+      opacity: 0.1;
+    }
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+      100% { transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
+  <!-- Feather Decoration -->
+  <img src="feather.png" class="feather-anim" style="top: 10%; left: 5%; width: 60px;">
+  <img src="feather.png" class="feather-anim" style="top: 50%; left: 80%; width: 40px;">
+  <img src="feather.png" class="feather-anim" style="top: 70%; left: 20%; width: 50px;">
+
+  <!-- Scroll to Top Button -->
+  <button id="scrollTopBtn" title="Върни се горе"><i class="fas fa-chevron-up"></i></button>
+
   <!-- Navigation Bar -->
   <nav class="navbar navbar-expand-lg navbar-dark bg-crystal fixed-top shadow">
     <div class="container">
-      <!-- Site Logo -->
       <a class="navbar-brand" href="#"><i class="fas fa-gem"></i> Кристали по света</a>
-      <!-- Toggler for mobile navigation -->
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav ms-auto">
-          <!-- Navigation links -->
           <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fas fa-home"></i> Начало</a></li>
           <li class="nav-item"><a class="nav-link" href="#gallery"><i class="fas fa-images"></i> Галерия</a></li>
           <li class="nav-item"><a class="nav-link" href="#info"><i class="fas fa-info-circle"></i> Инфо</a></li>
@@ -38,59 +68,93 @@
 
   <!-- Header Section (Hero) -->
   <header class="hero">
-    <div class="hero-content">
+    <div class="hero-content text-center">
       <h1 class="display-4 fw-bold">Магията на кристалите</h1>
       <p class="lead">Открийте техния произход, видове и невероятна красота</p>
+      <a href="#gallery" class="btn btn-crystal mt-3">Разгледай галерията</a>
     </div>
   </header>
 
   <!-- Gallery Section -->
   <section id="gallery" class="section-padding">
     <div class="container">
-      <h2 class="text-center text-crystal mb-5">Избрани Кристали</h2>
+      <h2 class="text-center text-crystal mb-5">Интересни Факти</h2>
       <div class="row g-4">
-        <!-- Crystal Card 1 -->
-        <div class="col-md-4">
-          <div class="card">
-            <img src="IMAGE_1424682_40_0.jpg" class="card-img-top" alt="Кварц">
-            <div class="card-body">
-              <h5 class="card-title">Кварц</h5>
-              <p class="card-text">Прозрачен и често срещан минерал, използван както в технологии, така и в духовни практики.</p>
-              <a href="#" class="btn btn-crystal w-100">Научи повече</a>
-            </div>
-          </div>
-        </div>
+        <!-- Crystal Cards -->
+        <!-- Same as before -->
+      </div>
 
-        <!-- Crystal Card 2 -->
-        <div class="col-md-4">
-          <div class="card">
-            <img src="Amethyst.webp" class="card-img-top" alt="Аметист">
-            <div class="card-body">
-              <h5 class="card-title">Аметист</h5>
-              <p class="card-text">Лилав кварц, символ на духовност и защита. Особено популярен в бижутерията.</p>
-              <a href="#" class="btn btn-crystal w-100">Научи повече</a>
-            </div>
-          </div>
-        </div>
+      <!-- Fun Fact Section -->
+      <div class="fun-fact">
+        <h4><i class="fas fa-star text-warning"></i> Любопитен факт</h4>
+        <p>Думата "кристал" идва от гръцката дума "krystallos", която означава лед. Древните гърци вярвали, че кварцът е вечен лед.</p>
+      </div>
 
-        <!-- Crystal Card 3 -->
-        <div class="col-md-4">
-          <div class="card">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Citrine_Polished.jpg" class="card-img-top" alt="Цитрин">
-            <div class="card-body">
-              <h5 class="card-title">Цитрин</h5>
-              <p class="card-text">Златист кристал, символизиращ богатство, слънце и позитивна енергия.</p>
-              <a href="#" class="btn btn-crystal w-100">Научи повече</a>
-            </div>
+      <!-- Featured Crystals Section -->
+<section id="featured" class="section-padding bg-light">
+  <div class="container">
+    <h2 class="text-center text-crystal mb-5">Избрани Кристали</h2>
+    <div class="row g-4 justify-content-center">
+      <!-- Featured Crystal 1 -->
+      <div class="col-md-4">
+        <div class="card featured-crystal-card">
+          <img src="IMAGE_1424682_40_0.jpg" class="card-img-top" alt="Кварц">
+          <div class="card-body text-center">
+            <h5 class="card-title">Кварц</h5>
+            <button class="btn btn-crystal view-crystal-btn" data-title="Кварц" data-img="IMAGE_1424682_40_0.jpg" data-desc="Прозрачен и често срещан минерал, използван както в технологии, така и в духовни практики.">Виж повече</button>
           </div>
         </div>
       </div>
+
+      <!-- Featured Crystal 2 -->
+      <div class="col-md-4">
+        <div class="card featured-crystal-card">
+          <img src="Amethyst.webp" class="card-img-top" alt="Аметист">
+          <div class="card-body text-center">
+            <h5 class="card-title">Аметист</h5>
+            <button class="btn btn-crystal view-crystal-btn" data-title="Аметист" data-img="Amethyst.webp" data-desc="Лилав кварц, символ на духовност и защита. Особено популярен в бижутерията.">Виж повече</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Crystal 3 -->
+      <div class="col-md-4">
+        <div class="card featured-crystal-card">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/0/01/Citrine_Polished.jpg" class="card-img-top" alt="Цитрин">
+          <div class="card-body text-center">
+            <h5 class="card-title">Цитрин</h5>
+            <button class="btn btn-crystal view-crystal-btn" data-title="Цитрин" data-img="https://upload.wikimedia.org/wikipedia/commons/0/01/Citrine_Polished.jpg" data-desc="Златист кристал, символизиращ богатство, слънце и позитивна енергия.">Виж повече</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal for Viewing Crystal Details -->
+<div class="modal fade" id="crystalModal" tabindex="-1" aria-labelledby="crystalModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      <div class="modal-header bg-crystal text-white">
+        <h5 class="modal-title" id="crystalModalLabel">Заглавие</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Затвори"></button>
+      </div>
+      <div class="modal-body text-center">
+        <img id="crystalModalImg" src="" alt="" class="img-fluid mb-3" style="max-height: 400px; object-fit: contain;">
+        <p id="crystalModalDesc"></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Затвори</button>
+      </div>
+    </div>
+  </div>
+</div>
 
       <!-- Call to Action Card -->
       <div class="text-center mt-5">
         <div class="card border-0 shadow">
           <div class="card-body">
-            <h5 class="card-title">Искаш да разбереш кой кристал си ти?</h5>
+            <h5 class="card-title">Искаш да разбереш какво си запомнил от този проект?</h5>
             <a href="#" class="btn btn-info">Започни тест</a>
           </div>
         </div>
