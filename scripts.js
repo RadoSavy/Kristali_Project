@@ -71,18 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle(darkClass);
       themeSwitcher.textContent = document.body.classList.contains(darkClass) ? '☀️' : '🌙';
     });
-  
-    // Crystal gallery filter (by type)
-    // Добави в HTML: филтър бутоните (примерно преди галерията):
-    /*
-    <div id="filterButtons" class="text-center mb-4">
-      <button class="btn btn-outline-crystal active" data-filter="all">Всички</button>
-      <button class="btn btn-outline-crystal" data-filter="quartz">Кварц</button>
-      <button class="btn btn-outline-crystal" data-filter="amethyst">Аметист</button>
-      <button class="btn btn-outline-crystal" data-filter="citrine">Цитрин</button>
-    </div>
-    */
-  
+    
     const filterButtons = document.querySelectorAll('#filterButtons button');
     const crystalCards = document.querySelectorAll('.crystal-card');
   
