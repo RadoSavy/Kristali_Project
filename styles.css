@@ -165,7 +165,7 @@ body.gray-theme #featured .card {
   position: fixed;
   top: 50%;
   right: 10px;
-  transform: translateY(-50%);
+  transform: translateY(100%);
   background: #6a5acd;
   border: none;
   color: white;
