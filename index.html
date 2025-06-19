@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Магията на кристалите</title>
+    <title>Кристалите</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -767,7 +767,7 @@
         <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809" alt="Кристали" class="hero-image">
         
         <div class="hero-content">
-            <h1>Магията на кристалите</h1>
+            <h1></h1>Кристалите</h1>
             <p>Открийте красотата, енергията и лечебните свойства на природните кристали</p>
             <a href="#types" class="cta-button">Разгледайте колекцията</a>
         </div>
@@ -978,13 +978,8 @@
     <footer>
         <div class="footer-content">
             <div class="footer-column">
-                <h3>Кристална Магия</h3>
+                <h3>Кристали</h3>
                 <p>Този сайт е посветен на красотата и силата на природните кристали. Тук ще намерите информация за различните видове кристали, техните свойства и употреба.</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                </div>
             </div>
             
             <div class="footer-column">
@@ -1009,7 +1004,7 @@
         </div>
         
         <div class="copyright">
-            &copy; 2023 Кристална Магия. Всички права запазени.
+            &copy; Радостин Савов VIIIa.
         </div>
     </footer>
 
@@ -1051,119 +1046,118 @@
         }
         
         // Quiz Functionality
-        const quizData = [
-            {
-                question: "Кой кристал е известен като 'камъкът на любовта'?",
-                options: ["Аметист", "Розов кварц", "Цитрин", "Лазурит"],
-                correct: 1
-            },
-            {
-                question: "Какво е основното свойство на аметиста?",
-                options: ["Привлича пари", "Успокоява и балансира", "Дава енергия", "Подобрява паметта"],
-                correct: 1
-            },
-            {
-                question: "Кой кристал се използва за защита от негативна енергия?",
-                options: ["Кварц", "Малахит", "Цитрин", "Всички горепосочени"],
-                correct: 3
-            },
-            {
-                question: "Как се нарича процесът на образуване на кристали?",
-                options: ["Фотосинтеза", "Кристализация", "Дистилация", "Окисление"],
-                correct: 1
-            },
-            {
-                question: "Колко време може да отнеме образуването на кристал?",
-                options: ["Няколко часа", "Няколко дни", "Няколко години", "От няколко дни до милиони години"],
-                correct: 3
-            }
-        ];
+const quizData = [
+    {
+        question: "Кой кристал е известен като 'камъкът на любовта'?",
+        options: ["Аметист", "Розов кварц", "Цитрин", "Лазурит"],
+        correct: 1
+    },
+    {
+        question: "Какво е основното свойство на аметиста?",
+        options: ["Привлича пари", "Успокоява и балансира", "Дава енергия", "Подобрява паметта"],
+        correct: 1
+    },
+    {
+        question: "Кой кристал се използва за защита от негативна енергия?",
+        options: ["Кварц", "Малахит", "Цитрин", "Всички горепосочени"],
+        correct: 3
+    },
+    {
+        question: "Как се нарича процесът на образуване на кристали?",
+        options: ["Фотосинтеза", "Кристализация", "Дистилация", "Окисление"],
+        correct: 1
+    },
+    {
+        question: "Колко време може да отнеме образуването на кристал?",
+        options: ["Няколко часа", "Няколко дни", "Няколко години", "От няколко дни до милиони години"],
+        correct: 3
+    }
+];
 
-        let currentQuestion = 0;
-        let score = 0;
+let currentQuestion = 0;
+let score = 0;
+const questionEl = document.getElementById('question');
+const optionsEl = document.querySelector('.options');
+const nextBtn = document.getElementById('next-btn');
+const questionCountEl = document.querySelector('.question-count');
 
-        const questionEl = document.getElementById('question');
-        const optionsEl = document.getElementById('options');
-        const nextBtn = document.getElementById('next-btn');
-        const questionCountEl = document.getElementById('question-count');
+function loadQuestion() {
+    const currentQuiz = quizData[currentQuestion];
+    questionEl.textContent = currentQuiz.question;
+    
+    optionsEl.innerHTML = '';
+    currentQuiz.options.forEach((option, index) => {
+        const optionEl = document.createElement('div');
+        optionEl.classList.add('option');
+        optionEl.textContent = option;
+        optionEl.dataset.index = index;
+        optionEl.addEventListener('click', selectOption);
+        optionsEl.appendChild(optionEl);
+    });
+    
+    questionCountEl.textContent = `Въпрос ${currentQuestion + 1} от ${quizData.length}`;
+    nextBtn.style.display = 'none';
+    nextBtn.textContent = currentQuestion === quizData.length - 1 ? 'Виж резултата' : 'Следващ въпрос';
+}
 
-        function loadQuestion() {
-            const currentQuiz = quizData[currentQuestion];
-            questionEl.textContent = currentQuiz.question;
-
-            optionsEl.innerHTML = '';
-            currentQuiz.options.forEach((option, index) => {
-                const optionEl = document.createElement('div');
-                optionEl.classList.add('option');
-                optionEl.textContent = option;
-                optionEl.dataset.index = index;
-                optionEl.addEventListener('click', selectOption);
-                optionsEl.appendChild(optionEl);
-            });
-
-            questionCountEl.textContent = `Въпрос ${currentQuestion + 1} от ${quizData.length}`;
-            nextBtn.style.display = 'none';
+function selectOption(e) {
+    const selectedOption = e.target;
+    const selectedIndex = parseInt(selectedOption.dataset.index);
+    const correctIndex = quizData[currentQuestion].correct;
+    
+    // Disable further selection
+    document.querySelectorAll('.option').forEach(option => {
+        option.style.pointerEvents = 'none';
+        const optionIndex = parseInt(option.dataset.index);
+        if (optionIndex === correctIndex) {
+            option.classList.add('correct');
+        } else if (optionIndex === selectedIndex && selectedIndex !== correctIndex) {
+            option.classList.add('incorrect');
         }
+    });
+    
+    selectedOption.classList.add('selected');
+    if (selectedIndex === correctIndex) {
+        score++;
+    }
+    
+    nextBtn.style.display = 'inline-block';
+}
 
-        function selectOption(e) {
-            const selectedOption = e.target;
-            const selectedIndex = parseInt(selectedOption.dataset.index);
-            const correctIndex = quizData[currentQuestion].correct;
-
-            // Disable further selection
-            document.querySelectorAll('.option').forEach(option => {
-                option.style.pointerEvents = 'none';
-                const optionIndex = parseInt(option.dataset.index);
-                if (optionIndex === correctIndex) {
-                    option.classList.add('correct');
-                } else if (optionIndex === selectedIndex && selectedIndex !== correctIndex) {
-                    option.classList.add('incorrect');
-                }
-            });
-
-            selectedOption.classList.add('selected');
-            if (selectedIndex === correctIndex) {
-                score++;
-            }
-
-            nextBtn.style.display = 'inline-block';
-        }
-
-        nextBtn.addEventListener('click', () => {
-            currentQuestion++;
-
-            if (currentQuestion < quizData.length) {
-                loadQuestion();
-            } else {
-                showResult();
-            }
-        });
-
-        function showResult() {
-            const quizBody = document.querySelector('.quiz-body');
-            const quizFooter = document.querySelector('.quiz-footer');
-            quizBody.innerHTML = `
-                <div class="quiz-result">
-                    <h3>Вашият резултат</h3>
-                    <div class="score">${score}/${quizData.length}</div>
-                    <p>${score === quizData.length ? 'Чудесно! Вие сте истински познавач на кристали!' : 
-                       score >= quizData.length / 2 ? 'Добър резултат! Продължавайте да изучавате кристалите!' : 
-                       'Опитайте отново! Кристалите са изпълнени с още тайни!'}</p>
-                    <button class="btn btn-secondary" id="restart-btn">Пробвайте отново</button>
-                </div>
-            `;
-            quizFooter.style.display = 'none';
-
-            document.getElementById('restart-btn').addEventListener('click', () => {
-                currentQuestion = 0;
-                score = 0;
-                loadQuestion();
-                quizFooter.style.display = 'flex';
-            });
-        }
-
-        // Start the quiz
+function showResult() {
+    const quizBody = document.querySelector('.quiz-body');
+    quizBody.innerHTML = `
+        <div class="quiz-result">
+            <h3>Вашият резултат</h3>
+            <div class="score">${score}/${quizData.length}</div>
+            <p>${score === quizData.length ? 'Чудесно! Вие сте истински познавач на кристали!' : 
+               score >= quizData.length/2 ? 'Добър резултат! Продължавайте да изучавате кристалите!' : 
+               'Опитайте отново! Кристалите са изпълнени с още тайни!'}</p>
+            <button class="btn btn-secondary" id="restart-btn">Пробвайте отново</button>
+        </div>
+    `;
+    document.querySelector('.quiz-footer').style.display = 'none';
+    
+    document.getElementById('restart-btn').addEventListener('click', () => {
+        currentQuestion = 0;
+        score = 0;
         loadQuestion();
+        document.querySelector('.quiz-footer').style.display = 'flex';
+    });
+}
+
+nextBtn.addEventListener('click', () => {
+    currentQuestion++;
+    
+    if (currentQuestion < quizData.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+});
+
+// Initialize quiz
+loadQuestion();
         
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
