@@ -3,244 +3,1111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кристали по света</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Магията на кристалите</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #6a1b9a;
+            --primary-dark: #4a148c;
+            --primary-light: #9c27b0;
+            --secondary: #ff9800;
+            --accent: #e91e63;
+            --light: #f3e5f5;
+            --dark: #1a1a1a;
+            --text: #333;
+            --card-bg: #ffffff;
+        }
+
         body {
-            font-family: 'Outfit', sans-serif;
-            background-color: #f9fafc;
-            color: #2c2c2c;
-            padding-top: 60px;
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
         }
-        .navbar {
-            background: linear-gradient(to right, #5f27cd, #341f97);
+
+        /* Header & Navigation */
+        header {
+            background: rgba(106, 27, 154, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
         }
-        .navbar-brand, .nav-link {
-            color: white !important;
-            font-weight: 600;
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
         }
-        .hero {
-            background: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809') center/cover;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: white;
-            padding: 120px 0;
-            position: relative;
-            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+            text-decoration: none;
         }
-        .hero::before {
+
+        .logo i {
+            color: var(--secondary);
+            font-size: 2.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .nav-links a.active {
+            background: var(--secondary);
+        }
+
+        .nav-links a::after {
             content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--secondary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::after {
+            width: 80%;
+        }
+
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 70px;
+        }
+
+        .hero-image {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            opacity: 0.7;
         }
-        .hero .container {
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(255, 152, 0, 0.5);
+            background: #ff8c00;
+        }
+
+        .floating-icons {
+            position: absolute;
+            bottom: 20%;
+            left: 10%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .floating-icons.right {
+            left: auto;
+            right: 10%;
+            animation-delay: 2s;
+        }
+
+        .floating-icons i {
+            font-size: 3rem;
+            color: var(--primary);
+            opacity: 0.7;
+        }
+
+        /* Crystal Types Section */
+        .crystal-types {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+
+        .crystals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .crystal-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
             position: relative;
             z-index: 1;
         }
-        .btn-crystal {
-            background: #5f27cd;
-            color: #fff;
-            border-radius: 30px;
-            padding: 10px 24px;
-            font-weight: 600;
-            border: none;
-            transition: all 0.3s;
-        }
-        .btn-crystal:hover {
-            background: #341f97;
-            transform: scale(1.05);
-            color: #fff;
-        }
-        .section-padding {
-            padding: 80px 0;
-        }
-        .text-crystal {
-            color: #5f27cd;
-            font-weight: 800;
-        }
-        .card {
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            height: 100%;
-        }
-        .card:hover {
+
+        .crystal-card:hover {
             transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
         }
-        .card-img-top {
+
+        .crystal-image {
             height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .crystal-image img {
+            width: 100%;
+            height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
-        .fun-fact {
-            background: #f8f9fa;
-            padding: 20px;
-            border-left: 5px solid #5f27cd;
-            border-radius: 5px;
-            margin-top: 30px;
+
+        .crystal-card:hover .crystal-image img {
+            transform: scale(1.1);
         }
-        .more-info {
-            display: none;
-            padding-top: 15px;
+
+        .crystal-content {
+            padding: 2rem;
         }
-        @media (max-width: 768px) {
-            .hero {
-                padding: 80px 0;
+
+        .crystal-content h3 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .crystal-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .crystal-properties {
+            display: flex;
+            justify-content: space-between;
+            background: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        /* Healing Properties */
+        .healing-properties {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .properties-steps {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .property {
+            flex: 1;
+            min-width: 250px;
+            max-width: 350px;
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .property:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .property-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .property h3 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        /* Crystal Formation */
+        .formation {
+            padding: 5rem 2rem;
+            background: white;
+            text-align: center;
+        }
+
+        .formation-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .formation-content p {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Quiz Section */
+        .quiz-section {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-header {
+            background: var(--primary);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .quiz-header h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-body {
+            padding: 2rem;
+        }
+
+        .question {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: var(--primary-dark);
+            font-weight: 600;
+        }
+
+        .options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (max-width: 600px) {
+            .options {
+                grid-template-columns: 1fr;
             }
-            .section-padding {
-                padding: 50px 0;
+        }
+
+        .option {
+            padding: 1.2rem;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            font-size: 1.1rem;
+        }
+
+        .option:hover {
+            border-color: var(--primary-light);
+            background: #f8f1ff;
+        }
+
+        .option.selected {
+            border-color: var(--primary);
+            background: #f3e5f5;
+            font-weight: 600;
+        }
+
+        .quiz-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 1.5rem 2rem;
+            background: #f5f5f5;
+        }
+
+        .btn {
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #e68a00;
+        }
+
+        .quiz-result {
+            padding: 2rem;
+            text-align: center;
+            display: none;
+        }
+
+        .quiz-result h3 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .score {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin: 1rem 0;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://images.unsplash.com/photo-1582582494705-f8ce0b0c24f0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: var(--dark);
+        }
+
+        .cta-section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero p {
+                font-size: 1.3rem;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: var(--primary-dark);
+                width: 100%;
+                height: calc(100vh - 70px);
+                padding: 2rem;
+                transition: all 0.4s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .mobile-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .crystal-content h3 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top shadow">
-        <div class="container">
-            <a class="navbar-brand" href="#"><i class="fas fa-gem"></i> Кристали по света</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Начало</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#gallery">Галерия</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#info">Инфо</a></li>
+    <!-- Header -->
+    <header id="header">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-gem"></i>
+                <span>Кристална Магия</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Начало</a></li>
+                    <li><a href="#types">Видове</a></li>
+                    <li><a href="#properties">Свойства</a></li>
+                    <li><a href="#formation">Образуване</a></li>
+                    <li><a href="#quiz">Тест</a></li>
                 </ul>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="hero text-center">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Магията на кристалите</h1>
-            <p class="lead">Открийте техния произход, видове и невероятна красота</p>
-            <a href="#gallery" class="btn btn-crystal mt-3">Разгледай галерията</a>
+            </nav>
+            
+            <button class="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </div>
     </header>
 
-    <!-- Gallery Section -->
-    <section id="gallery" class="section-padding text-center">
-        <div class="container">
-            <h2 class="mb-5 text-crystal">Галерия от кристали</h2>
-            <div class="row">
-                <!-- Аметист -->
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="Images/Amethyst.webp" class="card-img-top" alt="Аметист" onerror="this.src='https://via.placeholder.com/300x200/9b59b6/ffffff?text=Amethyst'">
-                        <div class="card-body">
-                            <h5 class="card-title">Аметист</h5>
-                            <p class="card-text">Лилав кварц, известен със своите успокояващи свойства.</p>
-                            <button class="btn btn-crystal btn-more" data-target="amethyst-info">Научи повече</button>
-                            <div id="amethyst-info" class="more-info">
-                                <p>Аметистът е скъпоценен камък, разновидност на кварца. Използва се от древни времена като амулет срещу опиянение. Днес се смята, че носи спокойствие и баланс.</p>
-                                <p><strong>Месторождения:</strong> Бразилия, Уругвай, Замбия</p>
-                            </div>
-                        </div>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img src="https://images.unsplash.com/photo-1579546929518-9e396f3cc809" alt="Кристали" class="hero-image">
+        
+        <div class="hero-content">
+            <h1>Магията на кристалите</h1>
+            <p>Открийте красотата, енергията и лечебните свойства на природните кристали</p>
+            <a href="#types" class="cta-button">Разгледайте колекцията</a>
+        </div>
+        
+        <div class="floating-icons">
+            <i class="fas fa-crystal"></i>
+        </div>
+        
+        <div class="floating-icons right">
+            <i class="fas fa-magic"></i>
+        </div>
+    </section>
+
+    <!-- Crystal Types Section -->
+    <section id="types" class="crystal-types">
+        <h2 class="section-title">Видове кристали и техните свойства</h2>
+        
+        <div class="crystals-grid">
+            <!-- Аметист -->
+            <div class="crystal-card">
+                <div class="crystal-image">
+                    <img src="Images/Amethyst.webp" alt="Аметист" onerror="this.src='https://via.placeholder.com/300x200/9b59b6/ffffff?text=Amethyst'">
+                </div>
+                <div class="crystal-content">
+                    <h3>Аметист</h3>
+                    <p>Лилав кварц, известен със своите успокояващи и духовни свойства. Използва се за медитация и подобряване на интуицията.</p>
+                    <div class="crystal-properties">
+                        <span>Цвят:</span>
+                        <span>Лилав</span>
                     </div>
                 </div>
-                
-                <!-- Розов кварц -->
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="Images/IMAGE_1424682_40_0.jpg" class="card-img-top" alt="Розов кварц" onerror="this.src='https://via.placeholder.com/300x200/ff9ff3/ffffff?text=Rose+Quartz'">
-                        <div class="card-body">
-                            <h5 class="card-title">Розов кварц</h5>
-                            <p class="card-text">Камъкът на безусловната любов и себеприемането.</p>
-                            <button class="btn btn-crystal btn-more" data-target="rosequartz-info">Научи повече</button>
-                            <div id="rosequartz-info" class="more-info">
-                                <p>Розовият кварц е известен като "камъкът на любовта". Смята се, че лекува сърдечни рани и насърчава себеприемането.</p>
-                                <p><strong>Месторождения:</strong> Мадагаскар, Бразилия, Южна Африка</p>
-                            </div>
-                        </div>
+            </div>
+            
+            <!-- Розов кварц -->
+            <div class="crystal-card">
+                <div class="crystal-image">
+                    <img src="Images/IMAGE_1424682_40_0.jpg" alt="Розов кварц" onerror="this.src='https://via.placeholder.com/300x200/ff9ff3/ffffff?text=Rose+Quartz'">
+                </div>
+                <div class="crystal-content">
+                    <h3>Розов кварц</h3>
+                    <p>Камъкът на любовта и себеприемането. Спомога за лекуване на емоционални рани и насърчава безусловната любов.</p>
+                    <div class="crystal-properties">
+                        <span>Цвят:</span>
+                        <span>Розов</span>
                     </div>
                 </div>
-                
-                <!-- Цитрин -->
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="Images/Quartz_var._citrine_(quartz_jaune_du_Brésil).jpg" class="card-img-top" alt="Цитрин" onerror="this.src='https://via.placeholder.com/300x200/feca57/ffffff?text=Citrine'">
-                        <div class="card-body">
-                            <h5 class="card-title">Цитрин</h5>
-                            <p class="card-text">Слънчевият камък на просперитета и радостта.</p>
-                            <button class="btn btn-crystal btn-more" data-target="citrine-info">Научи повече</button>
-                            <div id="citrine-info" class="more-info">
-                                <p>Цитринът е жълт до оранжев кварц, наричан "търговският камък". Смята се, че привлича богатство и успех.</p>
-                                <p><strong>Месторождения:</strong> Бразилия, Испания, Мадагаскар</p>
-                            </div>
-                        </div>
+            </div>
+            
+            <!-- Цитрин -->
+            <div class="crystal-card">
+                <div class="crystal-image">
+                    <img src="Images/Quartz_var._citrine_(quartz_jaune_du_Brésil).jpg" alt="Цитрин" onerror="this.src='https://via.placeholder.com/300x200/feca57/ffffff?text=Citrine'">
+                </div>
+                <div class="crystal-content">
+                    <h3>Цитрин</h3>
+                    <p>Слънчевият камък на просперитета и радостта. Привлича богатство, успех и положителна енергия.</p>
+                    <div class="crystal-properties">
+                        <span>Цвят:</span>
+                        <span>Жълт до оранжев</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Кварц -->
+            <div class="crystal-card">
+                <div class="crystal-image">
+                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e" alt="Кварц">
+                </div>
+                <div class="crystal-content">
+                    <h3>Кварц</h3>
+                    <p>Универсален усилвател на енергия. Изчиства негативната енергия и усилва другите кристали.</p>
+                    <div class="crystal-properties">
+                        <span>Цвят:</span>
+                        <span>Прозрачен</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Лазурит -->
+            <div class="crystal-card">
+                <div class="crystal-image">
+                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e" alt="Лазурит">
+                </div>
+                <div class="crystal-content">
+                    <h3>Лазурит</h3>
+                    <p>Камъкът на мъдростта и истината. Стимулира интелекта и помага за изразяване на себе си.</p>
+                    <div class="crystal-properties">
+                        <span>Цвят:</span>
+                        <span>Син</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Малахит -->
+            <div class="crystal-card">
+                <div class="crystal-image">
+                    <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509" alt="Малахит">
+                </div>
+                <div class="crystal-content">
+                    <h3>Малахит</h3>
+                    <p>Камъкът на трансформацията. Помага при промени в живота и предпазва от негативна енергия.</p>
+                    <div class="crystal-properties">
+                        <span>Цвят:</span>
+                        <span>Зелен</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Info Section -->
-    <section id="info" class="section-padding">
-        <div class="container">
-            <h2 class="text-crystal mb-4">Информация за кристалите</h2>
-            <p>Кристалите са природни образувания с подредена атомна структура, която им придава уникални свойства. Използват се в бижутерията, декорацията и алтернативната медицина.</p>
-            
-            <div class="fun-fact">
-                <h5 class="text-crystal">Знаете ли?</h5>
-                <p>Най-големият кристал в света е кварц с тегло над 44 тона, намерен в Бразилия. Кристалите растат с различна скорост - някои се формират за дни, други за милиони години.</p>
+    <!-- Healing Properties Section -->
+    <section id="properties" class="healing-properties">
+        <h2 class="section-title">Лечебни свойства на кристалите</h2>
+        
+        <div class="properties-steps">
+            <div class="property">
+                <div class="property-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Емоционално здраве</h3>
+                <p>Кристалите могат да помогнат за балансиране на емоциите, намаляване на стреса и тревожността, както и за подобряване на самочувствието.</p>
             </div>
             
-            <button class="btn btn-crystal mt-3" id="moreScienceBtn">Научни факти</button>
-            <div id="scienceInfo" class="more-info">
-                <h5 class="mt-3">Кристалография</h5>
-                <p>Кристалите се класифицират в 7 кристални системи според симетрията си: кубична, тетрагонална, орторомбична, моноклинна, триклинна, тригонална и хексагонална.</p>
-                <p>Кварцът например принадлежи към тригоналната система. Кристалната структура определя не само формата, но и физичните свойства на минерала.</p>
+            <div class="property">
+                <div class="property-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Ментална яснота</h3>
+                <p>Някои кристали подобряват концентрацията, паметта и яснотата на мисленето, като премахват менталните блокове.</p>
+            </div>
+            
+            <div class="property">
+                <div class="property-icon">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3>Енергийно балансиране</h3>
+                <p>Кристалите работят с енергийните центрове на тялото (чакирите), подпомагайки тяхното балансиране и хармонизиране.</p>
+            </div>
+            
+            <div class="property">
+                <div class="property-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3>Защита</h3>
+                <p>Много кристали имат защитни свойства, предпазващи от негативна енергия, електромагнитни вълни и психически атаки.</p>
             </div>
         </div>
     </section>
 
-    <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Formation Section -->
+    <section id="formation" class="formation">
+        <h2 class="section-title">Как се образуват кристалите?</h2>
+        
+        <div class="formation-content">
+            <p>Кристалите са природни минерали с подредена атомна структура, която им придава уникалната им форма и свойства. Те се образуват чрез процес, наречен кристализация, който може да отнеме от няколко дни до милиони години.</p>
+            
+            <p>Има три основни начина на образуване на кристали:</p>
+            
+            <div class="properties-steps">
+                <div class="property">
+                    <div class="property-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Магматичен процес</h3>
+                    <p>Когато магмата се охлажда бавно под земята, минералите кристализират и образуват големи кристали.</p>
+                </div>
+                
+                <div class="property">
+                    <div class="property-icon">
+                        <i class="fas fa-temperature-high"></i>
+                    </div>
+                    <h3>Хидротермален процес</h3>
+                    <p>Горещи минерални разтвори пренасят вещества, които кристализират при охлаждане в пукнатини и кухини.</p>
+                </div>
+                
+                <div class="property">
+                    <div class="property-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <h3>Изпарителна кристализация</h3>
+                    <p>Когато вода, съдържаща разтворени минерали, се изпарява, остават кристали от тези минерали.</p>
+                </div>
+            </div>
+            
+            <p>Кристалите растат чрез добавяне на нови молекули към повърхността си в строго определен ред, което води до формирането на характерните за тях геометрични форми. Скоростта на растеж зависи от условията - температура, налягане и наличието на необходимите вещества.</p>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz-section">
+        <h2 class="section-title">Тест за кристали</h2>
+        
+        <div class="quiz-container">
+            <div class="quiz-header">
+                <h2>Какво знаете за кристалите?</h2>
+                <p>Отговорете на въпросите и проверете знанията си</p>
+            </div>
+            
+            <div class="quiz-body">
+                <div class="question" id="question">Въпросът ще се зареди тук</div>
+                
+                <div class="options" id="options"></div>
+            </div>
+            
+            <div class="quiz-footer">
+                <div class="question-count" id="question-count">Въпрос 1 от 5</div>
+                <button class="btn btn-primary" id="next-btn">Следващ въпрос</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Започнете своята кристална колекция днес!</h2>
+        <p>Открийте магията на кристалите и техните уникални свойства. Изберете перфектния кристал за вашите нужди.</p>
+        <a href="#types" class="btn btn-secondary">Разгледайте видовете</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Кристална Магия</h3>
+                <p>Този сайт е посветен на красотата и силата на природните кристали. Тук ще намерите информация за различните видове кристали, техните свойства и употреба.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Бързи връзки</h3>
+                <ul class="footer-links">
+                    <li><a href="#home">Начало</a></li>
+                    <li><a href="#types">Видове кристали</a></li>
+                    <li><a href="#properties">Лечебни свойства</a></li>
+                    <li><a href="#formation">Образуване</a></li>
+                    <li><a href="#quiz">Тест</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-column">
+                <h3>Контакти</h3>
+                <ul class="footer-links">
+                    <li><i class="fas fa-envelope"></i> info@crystalsmagic.bg</li>
+                    <li><i class="fas fa-phone"></i> +359 888 123 456</li>
+                    <li><i class="fas fa-map-marker-alt"></i> София, България</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            &copy; 2023 Кристална Магия. Всички права запазени.
+        </div>
+    </footer>
+
     <script>
-        // Toggle more info buttons
-        document.querySelectorAll('.btn-more').forEach(button => {
-            button.addEventListener('click', function() {
-                const targetId = this.getAttribute('data-target');
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement.style.display === 'block') {
-                    targetElement.style.display = 'none';
-                    this.textContent = 'Научи повече';
-                } else {
-                    targetElement.style.display = 'block';
-                    this.textContent = 'По-малко информация';
+        // Mobile Navigation Toggle
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        mobileToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Sticky Header
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.2)';
+                header.style.background = 'rgba(106, 27, 154, 0.98)';
+            } else {
+                header.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.1)';
+                header.style.background = 'rgba(106, 27, 154, 0.95)';
+            }
+        });
+        
+        // Quiz Functionality
+        const quizData = [
+            {
+                question: "Кой кристал е известен като 'камъкът на любовта'?",
+                options: ["Аметист", "Розов кварц", "Цитрин", "Лазурит"],
+                correct: 1
+            },
+            {
+                question: "Какво е основното свойство на аметиста?",
+                options: ["Привлича пари", "Успокоява и балансира", "Дава енергия", "Подобрява паметта"],
+                correct: 1
+            },
+            {
+                question: "Кой кристал се използва за защита от негативна енергия?",
+                options: ["Кварц", "Малахит", "Цитрин", "Всички горепосочени"],
+                correct: 3
+            },
+            {
+                question: "Как се нарича процесът на образуване на кристали?",
+                options: ["Фотосинтеза", "Кристализация", "Дистилация", "Окисление"],
+                correct: 1
+            },
+            {
+                question: "Колко време може да отнеме образуването на кристал?",
+                options: ["Няколко часа", "Няколко дни", "Няколко години", "От няколко дни до милиони години"],
+                correct: 3
+            }
+        ];
+
+        let currentQuestion = 0;
+        let score = 0;
+
+        const questionEl = document.getElementById('question');
+        const optionsEl = document.getElementById('options');
+        const nextBtn = document.getElementById('next-btn');
+        const questionCountEl = document.getElementById('question-count');
+
+        function loadQuestion() {
+            const currentQuiz = quizData[currentQuestion];
+            questionEl.textContent = currentQuiz.question;
+
+            optionsEl.innerHTML = '';
+            currentQuiz.options.forEach((option, index) => {
+                const optionEl = document.createElement('div');
+                optionEl.classList.add('option');
+                optionEl.textContent = option;
+                optionEl.dataset.index = index;
+                optionEl.addEventListener('click', selectOption);
+                optionsEl.appendChild(optionEl);
+            });
+
+            questionCountEl.textContent = `Въпрос ${currentQuestion + 1} от ${quizData.length}`;
+            nextBtn.style.display = 'none';
+        }
+
+        function selectOption(e) {
+            const selectedOption = e.target;
+            const selectedIndex = parseInt(selectedOption.dataset.index);
+            const correctIndex = quizData[currentQuestion].correct;
+
+            // Disable further selection
+            document.querySelectorAll('.option').forEach(option => {
+                option.style.pointerEvents = 'none';
+                const optionIndex = parseInt(option.dataset.index);
+                if (optionIndex === correctIndex) {
+                    option.classList.add('correct');
+                } else if (optionIndex === selectedIndex && selectedIndex !== correctIndex) {
+                    option.classList.add('incorrect');
                 }
             });
-        });
 
-        // Science info toggle
-        document.getElementById('moreScienceBtn').addEventListener('click', function() {
-            const scienceInfo = document.getElementById('scienceInfo');
-            
-            if (scienceInfo.style.display === 'block') {
-                scienceInfo.style.display = 'none';
-                this.textContent = 'Научни факти';
+            selectedOption.classList.add('selected');
+            if (selectedIndex === correctIndex) {
+                score++;
+            }
+
+            nextBtn.style.display = 'inline-block';
+        }
+
+        nextBtn.addEventListener('click', () => {
+            currentQuestion++;
+
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
             } else {
-                scienceInfo.style.display = 'block';
-                this.textContent = 'Скрий информация';
+                showResult();
             }
         });
 
-        // Smooth scrolling
+        function showResult() {
+            const quizBody = document.querySelector('.quiz-body');
+            const quizFooter = document.querySelector('.quiz-footer');
+            quizBody.innerHTML = `
+                <div class="quiz-result">
+                    <h3>Вашият резултат</h3>
+                    <div class="score">${score}/${quizData.length}</div>
+                    <p>${score === quizData.length ? 'Чудесно! Вие сте истински познавач на кристали!' : 
+                       score >= quizData.length / 2 ? 'Добър резултат! Продължавайте да изучавате кристалите!' : 
+                       'Опитайте отново! Кристалите са изпълнени с още тайни!'}</p>
+                    <button class="btn btn-secondary" id="restart-btn">Пробвайте отново</button>
+                </div>
+            `;
+            quizFooter.style.display = 'none';
+
+            document.getElementById('restart-btn').addEventListener('click', () => {
+                currentQuestion = 0;
+                score = 0;
+                loadQuestion();
+                quizFooter.style.display = 'flex';
+            });
+        }
+
+        // Start the quiz
+        loadQuestion();
+        
+        // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
             });
+        });
+        
+        // Floating icons animation
+        const floatingIcons = document.querySelectorAll('.floating-icons');
+        floatingIcons.forEach(icon => {
+            const delay = Math.random() * 2;
+            icon.style.animationDelay = `${delay}s`;
         });
     </script>
 </body>
