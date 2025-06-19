@@ -286,6 +286,39 @@
             color: #555;
         }
 
+        .more-info {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+            margin-bottom: 0;
+        }
+
+        .more-info.active {
+            max-height: 500px;
+            margin-bottom: 1.5rem;
+        }
+
+        .more-info-content {
+            padding: 1rem 0;
+            border-top: 1px solid #eee;
+        }
+
+        .btn-more {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .btn-more:hover {
+            background: var(--primary-dark);
+        }
+
         .crystal-properties {
             display: flex;
             justify-content: space-between;
@@ -349,7 +382,7 @@
             margin-bottom: 1rem;
         }
 
-        /* Crystal Formation */
+        /* Formation Section */
         .formation {
             padding: 5rem 2rem;
             background: white;
@@ -653,6 +686,37 @@
                 font-size: 1.5rem;
             }
         }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .nav-container {
+                padding: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .logo i {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -711,7 +775,18 @@
                 </div>
                 <div class="crystal-content">
                     <h3>Аметист</h3>
-                    <p>Лилав кварц, известен със своите успокояващи и духовни свойства. Използва се за медитация и подобряване на интуицията.</p>
+                    <p>Лилав кварц, известен със своите успокояващи и духовни свойства.</p>
+                    
+                    <div class="more-info" id="amethyst-info">
+                        <div class="more-info-content">
+                            <p>Аметистът е скъпоценен камък, разновидност на кварца. Използва се от древни времена като амулет срещу опиянение. Днес се смята, че носи спокойствие и баланс.</p>
+                            <p><strong>Месторождения:</strong> Бразилия, Уругвай, Замбия</p>
+                            <p><strong>Лечебни свойства:</strong> Успокоява нервната система, помага при безсъние и стрес</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-more" onclick="toggleMoreInfo('amethyst-info')">Научи повече</button>
+                    
                     <div class="crystal-properties">
                         <span>Цвят:</span>
                         <span>Лилав</span>
@@ -726,7 +801,18 @@
                 </div>
                 <div class="crystal-content">
                     <h3>Розов кварц</h3>
-                    <p>Камъкът на любовта и себеприемането. Спомога за лекуване на емоционални рани и насърчава безусловната любов.</p>
+                    <p>Камъкът на любовта и себеприемането.</p>
+                    
+                    <div class="more-info" id="rosequartz-info">
+                        <div class="more-info-content">
+                            <p>Розовият кварц е известен като "камъкът на любовта". Смята се, че лекува сърдечни рани и насърчава себеприемането.</p>
+                            <p><strong>Месторождения:</strong> Мадагаскар, Бразилия, Южна Африка</p>
+                            <p><strong>Лечебни свойства:</strong> Подпомага емоционалното изцеление, насърчава любовта и състраданието</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-more" onclick="toggleMoreInfo('rosequartz-info')">Научи повече</button>
+                    
                     <div class="crystal-properties">
                         <span>Цвят:</span>
                         <span>Розов</span>
@@ -741,55 +827,21 @@
                 </div>
                 <div class="crystal-content">
                     <h3>Цитрин</h3>
-                    <p>Слънчевият камък на просперитета и радостта. Привлича богатство, успех и положителна енергия.</p>
+                    <p>Слънчевият камък на просперитета и радостта.</p>
+                    
+                    <div class="more-info" id="citrine-info">
+                        <div class="more-info-content">
+                            <p>Цитринът е жълт до оранжев кварц, наричан "търговският камък". Смята се, че привлича богатство и успех.</p>
+                            <p><strong>Месторождения:</strong> Бразилия, Испания, Мадагаскар</p>
+                            <p><strong>Лечебни свойства:</strong> Подсилва самочувствието, привлича просперитет и положителна енергия</p>
+                        </div>
+                    </div>
+                    
+                    <button class="btn-more" onclick="toggleMoreInfo('citrine-info')">Научи повече</button>
+                    
                     <div class="crystal-properties">
                         <span>Цвят:</span>
                         <span>Жълт до оранжев</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Кварц -->
-            <div class="crystal-card">
-                <div class="crystal-image">
-                    <img src="https://images.unsplash.com/photo-1631729371254-42c2892f0e6e" alt="Кварц">
-                </div>
-                <div class="crystal-content">
-                    <h3>Кварц</h3>
-                    <p>Универсален усилвател на енергия. Изчиства негативната енергия и усилва другите кристали.</p>
-                    <div class="crystal-properties">
-                        <span>Цвят:</span>
-                        <span>Прозрачен</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Лазурит -->
-            <div class="crystal-card">
-                <div class="crystal-image">
-                    <img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e" alt="Лазурит">
-                </div>
-                <div class="crystal-content">
-                    <h3>Лазурит</h3>
-                    <p>Камъкът на мъдростта и истината. Стимулира интелекта и помага за изразяване на себе си.</p>
-                    <div class="crystal-properties">
-                        <span>Цвят:</span>
-                        <span>Син</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Малахит -->
-            <div class="crystal-card">
-                <div class="crystal-image">
-                    <img src="https://images.unsplash.com/photo-1582139329536-e7284fece509" alt="Малахит">
-                </div>
-                <div class="crystal-content">
-                    <h3>Малахит</h3>
-                    <p>Камъкът на трансформацията. Помага при промени в живота и предпазва от негативна енергия.</p>
-                    <div class="crystal-properties">
-                        <span>Цвят:</span>
-                        <span>Зелен</span>
                     </div>
                 </div>
             </div>
@@ -966,6 +1018,19 @@
                 header.style.background = 'rgba(106, 27, 154, 0.95)';
             }
         });
+        
+        // Toggle More Info
+        function toggleMoreInfo(id) {
+            const infoElement = document.getElementById(id);
+            infoElement.classList.toggle('active');
+            
+            const button = infoElement.previousElementSibling;
+            if (infoElement.classList.contains('active')) {
+                button.textContent = 'По-малко информация';
+            } else {
+                button.textContent = 'Научи повече';
+            }
+        }
         
         // Quiz Functionality
         const quizData = [
