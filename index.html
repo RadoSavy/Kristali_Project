@@ -4,22 +4,101 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кристали по света</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #f9fafc;
+            color: #2c2c2c;
+            padding-top: 60px;
+        }
+        .navbar {
+            background: linear-gradient(to right, #5f27cd, #341f97);
+        }
+        .navbar-brand, .nav-link {
+            color: white !important;
+            font-weight: 600;
+        }
+        .hero {
+            background: url('https://images.unsplash.com/photo-1579546929518-9e396f3cc809') center/cover;
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.5);
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        .btn-crystal {
+            background: #5f27cd;
+            color: #fff;
+            border-radius: 30px;
+            padding: 10px 24px;
+            font-weight: 600;
+            border: none;
+            transition: all 0.3s;
+        }
+        .btn-crystal:hover {
+            background: #341f97;
+            transform: scale(1.05);
+            color: #fff;
+        }
+        .section-padding {
+            padding: 80px 0;
+        }
+        .text-crystal {
+            color: #5f27cd;
+            font-weight: 800;
+        }
+        .card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            height: 100%;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+        }
+        .fun-fact {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 5px solid #5f27cd;
+            border-radius: 5px;
+            margin-top: 30px;
+        }
+        .more-info {
+            display: none;
+            padding-top: 15px;
+        }
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+            .section-padding {
+                padding: 50px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Scroll and Theme Buttons -->
-    <button id="scrollTopBtn" title="Върни се горе">
-        <i class="fas fa-chevron-up"></i>
-    </button>
-    <button id="themeToggleBtn" title="Смени тема">
-        <i class="fas fa-moon"></i>
-    </button>
-
-    <!-- Navigation Bar -->
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg fixed-top shadow">
         <div class="container">
             <a class="navbar-brand" href="#"><i class="fas fa-gem"></i> Кристали по света</a>
@@ -31,8 +110,6 @@
                     <li class="nav-item"><a class="nav-link active" href="#">Начало</a></li>
                     <li class="nav-item"><a class="nav-link" href="#gallery">Галерия</a></li>
                     <li class="nav-item"><a class="nav-link" href="#info">Инфо</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#testimonials">Отзиви</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacts">Контакти</a></li>
                 </ul>
             </div>
         </div>
@@ -40,7 +117,7 @@
 
     <!-- Hero Section -->
     <header class="hero text-center">
-        <div class="container" data-aos="fade-down">
+        <div class="container">
             <h1 class="display-4 fw-bold">Магията на кристалите</h1>
             <p class="lead">Открийте техния произход, видове и невероятна красота</p>
             <a href="#gallery" class="btn btn-crystal mt-3">Разгледай галерията</a>
@@ -50,50 +127,52 @@
     <!-- Gallery Section -->
     <section id="gallery" class="section-padding text-center">
         <div class="container">
-            <h2 class="mb-5 text-crystal" data-aos="zoom-in">Галерия от кристали</h2>
+            <h2 class="mb-5 text-crystal">Галерия от кристали</h2>
             <div class="row">
-                <div class="col-md-4 mb-4" data-aos="fade-up">
-                    <div class="card featured-crystal-card">
-                        <img src="Images/Amethyst.webp" class="card-img-top" alt="Аметист">
+                <!-- Аметист -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Images/Amethyst.webp" class="card-img-top" alt="Аметист" onerror="this.src='https://via.placeholder.com/300x200/9b59b6/ffffff?text=Amethyst'">
                         <div class="card-body">
                             <h5 class="card-title">Аметист</h5>
-                            <p class="card-text">Красив лилав кварц със силни духовни свойства.</p>
-                            <button class="btn btn-crystal view-crystal-btn" 
-                                    data-title="Аметист" 
-                                    data-img="Images/Amethyst.webp" 
-                                    data-desc="Аметистът е лилава разновидност на минерала кварц. Използва се като скъпоценен камък и се смята, че има успокояващ ефект и помага за медитация.">
-                                Виж повече
-                            </button>
+                            <p class="card-text">Лилав кварц, известен със своите успокояващи свойства.</p>
+                            <button class="btn btn-crystal btn-more" data-target="amethyst-info">Научи повече</button>
+                            <div id="amethyst-info" class="more-info">
+                                <p>Аметистът е скъпоценен камък, разновидност на кварца. Използва се от древни времена като амулет срещу опиянение. Днес се смята, че носи спокойствие и баланс.</p>
+                                <p><strong>Месторождения:</strong> Бразилия, Уругвай, Замбия</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="card featured-crystal-card">
-                        <img src="Images/IMAGE_1424682_40_0.jpg" class="card-img-top" alt="Розов кварц">
+                
+                <!-- Розов кварц -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Images/IMAGE_1424682_40_0.jpg" class="card-img-top" alt="Розов кварц" onerror="this.src='https://via.placeholder.com/300x200/ff9ff3/ffffff?text=Rose+Quartz'">
                         <div class="card-body">
                             <h5 class="card-title">Розов кварц</h5>
-                            <p class="card-text">Камък на любовта и вътрешната хармония.</p>
-                            <button class="btn btn-crystal view-crystal-btn" 
-                                    data-title="Розов кварц" 
-                                    data-img="Images/IMAGE_1424682_40_0.jpg" 
-                                    data-desc="Розовият кварц е розова разновидност на минерала кварц. Свързва се с любовта, приятелството и хармонията. Често се използва в бижутерията.">
-                                Виж повече
-                            </button>
+                            <p class="card-text">Камъкът на безусловната любов и себеприемането.</p>
+                            <button class="btn btn-crystal btn-more" data-target="rosequartz-info">Научи повече</button>
+                            <div id="rosequartz-info" class="more-info">
+                                <p>Розовият кварц е известен като "камъкът на любовта". Смята се, че лекува сърдечни рани и насърчава себеприемането.</p>
+                                <p><strong>Месторождения:</strong> Мадагаскар, Бразилия, Южна Африка</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="card featured-crystal-card">
-                        <img src="Images/Quartz_var._citrine_(quartz_jaune_du_Brésil).jpg" class="card-img-top" alt="Цитрин">
+                
+                <!-- Цитрин -->
+                <div class="col-md-4 mb-4">
+                    <div class="card">
+                        <img src="Images/Quartz_var._citrine_(quartz_jaune_du_Brésil).jpg" class="card-img-top" alt="Цитрин" onerror="this.src='https://via.placeholder.com/300x200/feca57/ffffff?text=Citrine'">
                         <div class="card-body">
                             <h5 class="card-title">Цитрин</h5>
-                            <p class="card-text">Камък на позитивността и енергията.</p>
-                            <button class="btn btn-crystal view-crystal-btn" 
-                                    data-title="Цитрин" 
-                                    data-img="Images/Quartz_var._citrine_(quartz_jaune_du_Brésil).jpg" 
-                                    data-desc="Цитринът е жълта до оранжева разновидност на кварца. Смята се, че носи положителна енергия и просперитет. Естественият цитрин е рядък, повечето се получават чрез термична обработка на аметист.">
-                                Виж повече
-                            </button>
+                            <p class="card-text">Слънчевият камък на просперитета и радостта.</p>
+                            <button class="btn btn-crystal btn-more" data-target="citrine-info">Научи повече</button>
+                            <div id="citrine-info" class="more-info">
+                                <p>Цитринът е жълт до оранжев кварц, наричан "търговският камък". Смята се, че привлича богатство и успех.</p>
+                                <p><strong>Месторождения:</strong> Бразилия, Испания, Мадагаскар</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -103,74 +182,66 @@
 
     <!-- Info Section -->
     <section id="info" class="section-padding">
-        <div class="container" data-aos="fade-right">
+        <div class="container">
             <h2 class="text-crystal mb-4">Информация за кристалите</h2>
-            <p>Кристалите са не само красиви, но и мощни енергийни инструменти. Те имат уникални вибрации и честоти, които се използват в различни практики – от медитация до лечение. Всеки кристал има своите свойства, история и символика.</p>
-            <div class="fun-fact mt-4" data-aos="flip-left">Знаете ли, че най-големият кварц в света тежи над 44 тона?</div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials text-center">
-        <div class="container" data-aos="zoom-in-up">
-            <h2 class="text-crystal mb-5">Отзиви от клиенти</h2>
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <p>⭐⭐⭐⭐⭐</p>
-                        <p>„Кристалите, които поръчах, бяха невероятни! Усеща се енергията им още с отварянето на пакета."</p>
-                        <strong>- Мария Т.</strong>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <p>⭐⭐⭐⭐⭐</p>
-                        <p>„Красив сайт и отлична комуникация. Определено ще поръчам отново!"</p>
-                        <strong>- Иван Д.</strong>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="testimonial-card">
-                        <p>⭐⭐⭐⭐⭐</p>
-                        <p>„Отлично качество и бърза доставка. Благодаря!"</p>
-                        <strong>- Елена К.</strong>
-                    </div>
-                </div>
+            <p>Кристалите са природни образувания с подредена атомна структура, която им придава уникални свойства. Използват се в бижутерията, декорацията и алтернативната медицина.</p>
+            
+            <div class="fun-fact">
+                <h5 class="text-crystal">Знаете ли?</h5>
+                <p>Най-големият кристал в света е кварц с тегло над 44 тона, намерен в Бразилия. Кристалите растат с различна скорост - някои се формират за дни, други за милиони години.</p>
+            </div>
+            
+            <button class="btn btn-crystal mt-3" id="moreScienceBtn">Научни факти</button>
+            <div id="scienceInfo" class="more-info">
+                <h5 class="mt-3">Кристалография</h5>
+                <p>Кристалите се класифицират в 7 кристални системи според симетрията си: кубична, тетрагонална, орторомбична, моноклинна, триклинна, тригонална и хексагонална.</p>
+                <p>Кварцът например принадлежи към тригоналната система. Кристалната структура определя не само формата, но и физичните свойства на минерала.</p>
             </div>
         </div>
     </section>
-
-    <!-- Contacts Section -->
-    <section id="contacts" class="section-padding text-center">
-        <div class="container" data-aos="fade-left">
-            <h2 class="text-crystal mb-4">Свържи се с нас</h2>
-            <p>Имаш въпрос или искаш да споделиш нещо? Пиши ни по всяко време!</p>
-            <a href="mailto:info@crystalsworld.bg" class="btn btn-crystal mt-3">Изпрати имейл</a>
-        </div>
-    </section>
-
-    <!-- Crystal Modal -->
-    <div class="modal fade" id="crystalModal" tabindex="-1" aria-labelledby="crystalModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="crystalModalLabel">Информация за кристала</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body text-center">
-                    <img id="crystalModalImg" src="" class="img-fluid mb-3" alt="Crystal">
-                    <p id="crystalModalDesc"></p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-crystal" data-bs-dismiss="modal">Затвори</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script src="script.js"></script>
+    <script>
+        // Toggle more info buttons
+        document.querySelectorAll('.btn-more').forEach(button => {
+            button.addEventListener('click', function() {
+                const targetId = this.getAttribute('data-target');
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement.style.display === 'block') {
+                    targetElement.style.display = 'none';
+                    this.textContent = 'Научи повече';
+                } else {
+                    targetElement.style.display = 'block';
+                    this.textContent = 'По-малко информация';
+                }
+            });
+        });
+
+        // Science info toggle
+        document.getElementById('moreScienceBtn').addEventListener('click', function() {
+            const scienceInfo = document.getElementById('scienceInfo');
+            
+            if (scienceInfo.style.display === 'block') {
+                scienceInfo.style.display = 'none';
+                this.textContent = 'Научни факти';
+            } else {
+                scienceInfo.style.display = 'block';
+                this.textContent = 'Скрий информация';
+            }
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
